@@ -20,25 +20,51 @@ else
 <header class = "card-header text-center">Employee Management Portal</header>
 	<div class = " text-right"><a
 		href="./logout"
-		method="POST" class = "btn btn-warning">LOGOUT</a>
+		class = "btn btn-warning">LOGOUT</a>
 		</div><br>
 	<br>
 	<div class = "text-center">
 		<h1>Welcome <%= name %></h1>
 	</div><br><br>
 	<br>
-	<div align="center">
-	
+	<div align="center">	
 		<a
-			href="${pageContext.request.contextPath}/employeeAssignment?action=ADD" class = "btn btn-link">Add
+			href="./add" class = "btn btn-link">Add
 			User</a> <br> <br> <a
 			href="./list" class = "btn btn-link">View
 			Users</a> <br> <br> <form
-			action="${pageContext.request.contextPath}/employeeAssignment">
-			<input type = "hidden" name = "action" value = "GET">
+			action="./welcome">
 			Search by ID : <input type = "text" name = "id">
 			<input type = "submit" value = "Search" class = "btn btn-primary">
 			<br>${message}</form>
 	</div>
+	<%if(request.getAttribute("employee") != null) {%>
+	<br><br>
+				<div align="center">
+				<table class = "table-striped table-hover table-bordered text-center"  >
+				<tr class = "table-info">
+				<th >ID</th>
+				<th>Name</th>
+				<th colspan=2>DOB&emsp;&ensp;&emsp;JoinedOn<br>yyyy-mm-dd</th>
+				<th>DeptID</th>
+				<th>Designation</th>
+				<th>Salary</th>
+				<th>OfficialEmail</th>
+				<th>Mobile</th>
+			    </tr>
+				<tr>
+					<td>${employee.empid}</td>
+					<td>${employee.name}</td>
+					<td>${employee.dob}</td>
+					<td>${employee.joined}</td>
+					<td>${employee.deptid}</td>
+					<td>${employee.designation}</td>
+					<td>${employee.salary}</td>
+					<td>${employee.mailid}</td>
+					<td>${employee.mobile}</td>
+				</tr>
+				</table>
+				</div>
+	<%} %>
 </body>
 </html>

@@ -18,21 +18,21 @@ if(session.getAttribute("admin") == null)
 <div class = " text-right">
 	<a href="./welcome" class = "btn btn-success">HOME</a>
     
-	<a href="./logout" method = "POST" class = "btn btn-warning">LOGOUT</a>
+	<a href="./logout" class = "btn btn-warning">LOGOUT</a>
 	</div><br>
 	<div class = "text-center"><a
-		href="${pageContext.request.contextPath}/employeeAssignment?action=LIST" class = "btn btn-link">LIST
+		href="./list" class = "btn btn-link">LIST
 		the Employees</a>
 		</div>
 	<br>
 	<h2 align = "center">${message}</h2>
 	<div class = "form-group text-center">
-	<form action="./add" >
+	<form action="./add" method = "POST" >
 		<input type="hidden" name="id" value="${id}"> 
 		<input type="text" name="name" value = "${name}" placeholder = "Employee Name"><br><br>
 		<input type="text" name="mail" value = "${mail}" placeholder = "Official EmailID"><br> <br>
 		 <p class = "btn btn-dark"> Date of Birth </p> &emsp;&emsp; <p class = "btn btn-dark"> Joining Date </p> <br>
-		 <input type="date" name="dob" value = "${dob}" >&ensp;<input type="date" name="joined" value = "${joined}"> <br><br> 
+		<input type="date" name="dob" value = "${dob}" >&ensp;<input type="date" name="joined" value = "${joined}"> <br><br> 
 		<input type="text" name="deptid" value = "${deptid}" placeholder = "Department ID"><br><br> 
 		<input type="text" name="designation" value = "${designation}" placeholder = "Designation"><br><br> 
 		<input type="text" name="salary" value = "${salary}" placeholder = "Salary"><br> <br>

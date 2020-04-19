@@ -17,10 +17,10 @@
 	<header class = "card-header text-center">Employee Management Portal</header>
 	<div class = " text-right"> <a
 		href="./welcome"
-		method="POST" class = "btn btn-success">HOME</a>
+		class = "btn btn-success">HOME</a>
 	<a
 		href="./logout"
-		method="POST" class = "btn btn-warning" >LOGOUT</a>
+		class = "btn btn-warning" >LOGOUT</a>
 		</div>
  <br> ${messagel}
 	<div align="center">
@@ -37,7 +37,8 @@
 				<th>Salary</th>
 				<th>OfficialEmail</th>
 				<th>Mobile</th>
-				<th>Action</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 			<c:forEach items="${employees}" var="employee">
 				<tr>
@@ -50,10 +51,25 @@
 					<td>${employee.salary}</td>
 					<td>${employee.mailid}</td>
 					<td>${employee.mobile}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/employeeAssignment?action=EDIT&id=${employee.empid}&name=${employee.name}&password=${employee.password}&mail=${employee.mailid}&dob=${employee.dob}&joined=${employee.joined}&deptid=${employee.deptid}&managerid=${employee.managerid}&designation=${employee.designation}&salary=${employee.salary}&mobile=${employee.mobile}"
-						method="POST">Edit</a> | <a
-						href="${pageContext.request.contextPath}/employeeAssignment?action=DELETE&id=${employee.empid}">Delete</a>
+					<td>
+						<form action="./add" method = "POST">
+						<input type = "hidden" name = "action" value = "edit">
+						<input type = "hidden" name = "id" value = "${employee.empid}">
+						<input type = "hidden" name = "name" value = "${employee.name}">
+						<input type = "hidden" name = "password" value = "${employee.password}">
+						<input type = "hidden" name = "mail" value = "${employee.mailid}">
+						<input type = "hidden" name = "dob" value = "${employee.dob}">
+						<input type = "hidden" name = "joined" value = "${employee.joined}">
+						<input type = "hidden" name = "deptid" value = "${employee.deptid}">
+						<input type = "hidden" name = "managerid" value = "${employee.managerid}">
+						<input type = "hidden" name = "designation" value = "${employee.designation}">
+						<input type = "hidden" name = "salary" value = "${employee.salary}">
+						<input type = "hidden" name = "mobile" value = "${employee.mobile}">
+						<input type = "submit" value = "Edit" class = "btn btn-outline-success">
+						</form>
+					 </td>
+					 <td> <a class = "btn btn-outline-danger"
+						href="./list?id=${employee.empid}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
